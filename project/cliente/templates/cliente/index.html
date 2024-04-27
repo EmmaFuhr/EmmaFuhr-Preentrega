@@ -1,0 +1,10 @@
+{% extends 'core/base.html' %}
+
+{% block contenido %}
+    {% for cliente in clientes  %}
+        <h1>{{cliente}}</h1>
+    {% endfor %}
+    {% for pedido in pedidos  %}
+        <h1>{{pedido}}</h1>
+    {% endfor %}
+{% endblock contenido %}
