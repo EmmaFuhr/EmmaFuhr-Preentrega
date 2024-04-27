@@ -1,0 +1,7 @@
+{% extends 'core/base.html' %}
+
+{% block contenido %}
+    {% for articulo in articulos  %}
+        <h1>{{articulo}}</h1>
+    {% endfor %}
+{% endblock contenido %}
