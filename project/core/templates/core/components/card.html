@@ -1,15 +1,17 @@
 {% load static %}
+
 <div class="col mb-5">
     <div class="card h-100">
         <!-- Product image-->
-        <img class="card-img-top" src="{% static 'core/img/imagen1.webp' %}" alt="..." />
+        <img class="card-img-top" src="{% static ruta %}" alt="..." />
         <!-- Product details-->
         <div class="card-body p-4">
             <div class="text-center">
                 <!-- Product name-->
-                <h5 class="fw-bolder">{{titulo }}</h5>
-                <!-- Product price-->
-                {{precio}}
+                    <h5 class="fw-bolder">{{ nombre }}</h5>
+                    <!-- Product price-->
+                    {{ precio}}
+                
             </div>
         </div>
         <!-- Product actions-->
