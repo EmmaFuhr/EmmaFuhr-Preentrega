@@ -5,23 +5,66 @@
 {% endblock titulo %}
 
 {% block contenido %}
+    <style>
+        .card {
+            max-width: 18rem;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            height: 100%; /* Establecer altura fija */
+        }
+        .card-body {
+            padding: 15px;
+            height: 100%; /* Asegurar que el cuerpo de la tarjeta ocupe toda la altura */
+        }
+        .card-title {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+        .card-text {
+            margin-bottom: 5px;
+            font-size: 1rem;
+            color: #666;
+        }
+        .card-text strong {
+            color: #444;
+        }
+        .card-container {
+            margin: 0 10px;
+        }
+    </style>
     <section class="clientes mt-4">
         <div class="row">
             {% for cliente in clientes %}
-                <div class="col-md-4 mb-4">
-                    <div class="card mx-4">
-                        <div class="card-body">
-                            <h3 class="card-title">{{ cliente }}</h3>
-                            <h8 class="card-title">{{ cliente.direccion }}</h8>
+                <div class="col-md-3 mb-3">
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title">{{ cliente }}</h3>
+                                <p class="card-text">
+                                    <strong>DNI:</strong> {{ cliente.dni }}
+                                </p>
+                                <p class="card-text">
+                                    <strong>Dirección:</strong> {{ cliente.direccion }}, {{ cliente.ciudad }}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            {% empty %}
-                <p class="mensaje">No hay clientes disponibles.</p>
             {% endfor %}
         </div>
     </section>
 {% endblock contenido %}
+
+
+
+
+
+
+
+
+
 
 
 
