@@ -21,7 +21,7 @@ class Cliente(models.Model):
 class Pedido(models.Model):
     cliente = models.ForeignKey(Cliente,on_delete=models.SET_NULL, null=True, blank=True,verbose_name='Cliente')
     articulo = models.ForeignKey(Articulo,on_delete=models.SET_NULL, null=True, blank=True,verbose_name='Artículo')
-    cantidad = models.IntegerField(verbose_name='DNI', default=0)
+    cantidad = models.IntegerField(verbose_name='Cantidad', default=0)
     
     def __str__(self):
         return f"{self.cliente} - Art.: {self.articulo} Cantidad: {self.cantidad} "
