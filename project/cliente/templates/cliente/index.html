@@ -1,10 +1,31 @@
 {% extends 'core/base.html' %}
 
+{% block titulo %}
+    Clientes
+{% endblock titulo %}
+
 {% block contenido %}
-    {% for cliente in clientes  %}
-        <h1>{{cliente}}</h1>
-    {% endfor %}
-    {% for pedido in pedidos  %}
-        <h1>{{pedido}}</h1>
-    {% endfor %}
+    <section class="clientes mt-4">
+        <div class="row">
+            {% for cliente in clientes %}
+                <div class="col-md-4 mb-4">
+                    <div class="card mx-4">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ cliente }}</h3>
+                            <h8 class="card-title">{{ cliente.direccion }}</h8>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="mensaje">No hay clientes disponibles.</p>
+            {% endfor %}
+        </div>
+    </section>
 {% endblock contenido %}
+
+
+
+
+
+
+
