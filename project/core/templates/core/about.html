@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block titulo %}
+    About
+{% endblock titulo %}
+
+{% block contenido %}
+<div class="container mt-5 mb-5"> <!-- Añadido mb-5 para espaciado inferior -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Acerca de Mí</h2>
+                    <img src="{% static 'core/img/emma.webp' %}" class="img-fluid rounded-circle mb-3" alt="Foto de perfil">
+                    <p class="card-text">¡Hola! Soy Emma, [Breve descripción sobre ti].</p>
+                    <p class="card-text">Puedes encontrarme en:</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fab fa-twitter"></i> <a href="https://twitter.com/tucuenta">Twitter</a></li>
+                        <li><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/emma_fuhr90">Instagram</a></li>
+                        <li><i class="fab fa-github"></i> <a href="https://github.com/tucuenta">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 50px;"></div>
+{% endblock contenido %}
