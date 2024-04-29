@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% block titulo %}
+    Crear nuevo Cliente
+{% endblock titulo %}
+
+{% block contenido %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="table-responsive">
+                            <table class="table">
+                                {{ form.as_table }}
+                            </table>
+                        </div>
+                        <button type="submit" class="btn btn-dark">Guardar</button>
+                        <a href="{% url 'cliente:home' %}" class="btn btn-dark">Volver</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}
