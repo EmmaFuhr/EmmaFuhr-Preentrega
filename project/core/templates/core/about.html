@@ -5,24 +5,29 @@
 {% endblock titulo %}
 
 {% block contenido %}
-<div class="container mt-5 mb-5"> <!-- Añadido mb-5 para espaciado inferior -->
+<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title">Acerca de Mí</h2>
-                    <img src="{% static 'core/img/emma.webp' %}" class="img-fluid rounded-circle mb-3" alt="Foto de perfil">
-                    <p class="card-text">¡Hola! Soy Emma, [Breve descripción sobre ti].</p>
-                    <p class="card-text">Puedes encontrarme en:</p>
-                    <ul class="list-unstyled">
-                        <li><i class="fab fa-twitter"></i> <a href="https://twitter.com/tucuenta">Twitter</a></li>
-                        <li><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/emma_fuhr90">Instagram</a></li>
-                        <li><i class="fab fa-github"></i> <a href="https://github.com/tucuenta">GitHub</a></li>
-                    </ul>
+            <div class="card border-0 shadow">
+                <div class="card-body text-center">
+                    <img src="{% static 'core/img/emma.webp' %}" class="rounded-circle mb-4" width="200" height="200" alt="Foto de perfil">
+                    <h2 class="card-title mb-3">¡Hola! Soy Emma</h2>
+                    <p class="card-text">Una entusiasta de 34 años, radicada en la hermosa ciudad de Humboldt, Santa Fe. Con dos adorables hijos que son mi mayor fuente de inspiración y alegría. Desde hace 14 años, he estado inmersa en el mundo laboral, específicamente en una empresa donde he tenido el privilegio de desempeñarme en el sector alimenticio. Actualmente, ocupo el rol de responsable de este sector, lo que me ha brindado una invaluable experiencia y un profundo conocimiento del rubro.                    
+                        A pesar de mi compromiso laboral, siempre he sentido una pasión latente por la programación. Aunque anteriormente no pude dedicarle el tiempo que hubiera deseado, recientemente he decidido retomar este interés con renovada determinación y entusiasmo. Estoy emocionada por explorar este fascinante campo y desarrollar nuevas habilidades que me permitan crecer tanto personal como profesionalmente. ¡El futuro se presenta emocionante y lleno de posibilidades!</p>
+                    <p class="card-text"></p>
+                    <div class="social-links mt-4">
+                        <a href="https://twitter.com/FuhrRo" class="twitter"><i class="fab fa-twitter"></i> Twitter</a>
+                        <a href="https://www.instagram.com/emma_fuhr90" class="instagram"><i class="fab fa-instagram"></i> Instagram</a>
+                        <a href="https://github.com/EmmaFuhr" class="github"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div style="height: 50px;"></div>
+
+<div style="height: 100px;"></div>
+
 {% endblock contenido %}
+
+
