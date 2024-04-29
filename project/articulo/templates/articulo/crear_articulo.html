@@ -5,12 +5,24 @@
 {% endblock titulo %}
 
 {% block contenido %}
-    <form action="" method="post">
-        {% csrf_token %}
-        <table>
-            {{ form.as_table}}
-        </table>
-        <button type="submit" class="btn btn-dark  ">Guardar</button>
-
-    </form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="table-responsive">
+                            <table class="table">
+                                {{ form.as_table }}
+                            </table>
+                        </div>
+                        <button type="submit" class="btn btn-dark">Guardar</button>
+                        <a href="{% url 'articulo:home' %}" class="btn btn-dark">Volver</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock contenido %}
