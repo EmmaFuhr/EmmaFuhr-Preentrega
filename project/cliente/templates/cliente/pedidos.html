@@ -1,0 +1,62 @@
+{% extends 'core/base.html' %}
+
+{% block titulo %}
+    Pedidos registrados
+{% endblock titulo %}
+
+{% block contenido %}
+<div style="margin-left: 20px; margin-top: 10px; display: inline-block; background-color: #f8f8f8; color: #3498db; padding: 8px 16px; border-radius: 8px;">
+    <a href="{% url 'cliente:crear_pedidos' %}" style="color: #3498db; text-decoration: none;">Crear nuevo Pedido</a>
+</div>
+    <style>
+        .card {
+            max-width: 18rem;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            height: 100%; /* Establecer altura fija */
+        }
+        .card-body {
+            padding: 15px;
+            height: 100%; /* Asegurar que el cuerpo de la tarjeta ocupe toda la altura */
+        }
+        .card-title {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+        .card-text {
+            margin-bottom: 5px;
+            font-size: 1rem;
+            color: #666;
+        }
+        .card-text strong {
+            color: #444;
+        }
+        .card-container {
+            margin: 0 10px;
+        }
+    </style>
+    <section class="clientes mt-4">
+        <div class="row">
+            {% for pedido in pedidos %}
+                <div class="col-md-3 mb-3">
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title">Cliente: {{ pedido.cliente }}</h3>
+                                <p class="card-text">
+                                    <strong>Artículo:</strong> {{ pedido.articulo }}
+                                </p>
+                                <p class="card-text">
+                                    <strong>Cantidad:</strong>  {{ pedido.cantidad }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+<div style="height: 50px;"></div>
+{% endblock contenido %}
