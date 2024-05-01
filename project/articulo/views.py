@@ -2,9 +2,14 @@ from django.shortcuts import render, redirect
 from . import models, forms
 # Create your views here.
 def home(request):
-    consulta_articulos = models.Articulo.objects.all()
+    consulta= request.GET.get("consulta", None)
+    if consulta:
+        consulta_articulos=models.Articulo.objects.filter(nombre__icontains=consulta)
+    else:
+        consulta_articulos= models.Articulo.objects.all()
     context = {"articulos": consulta_articulos}
     return render(request, "articulo/index.html", context)
+
 
 def crear_articulo(request):
     if request.method == "POST":
