@@ -8,6 +8,20 @@
 <div style="margin-left: 20px; margin-top: 10px; display: inline-block; background-color: #f8f8f8; color: #3498db; padding: 8px 16px; border-radius: 8px;">
     <a href="{% url 'cliente:crear_pedidos' %}" style="color: #3498db; text-decoration: none;">Crear nuevo Pedido</a>
 </div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form class="form-inline" action="{% url 'cliente:pedidos' %}" method="get">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="consulta" placeholder="Buscar Pedido...">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">Buscar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
     <style>
         .card {
             max-width: 18rem;
