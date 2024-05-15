@@ -1,17 +1,26 @@
 {% extends 'core/base.html' %}
 {% block titulo %}
-    Artículos Exclusivos
+    Lista de Artículos Exclusivos
 {% endblock titulo %}
 
 {% block contenido %}
 <div style="margin-left: 20px; margin-top: 10px; display: inline-block; background-color: #f8f8f8; color: #3498db; padding: 8px 16px; border-radius: 8px;">
-    <a href="{% url 'articulo:articulo_list' %}" style="color: #3498db; text-decoration: none;">Listar Artículos</a>
+    <a href="{% url 'articulo:home' %}" style="color: #3498db; text-decoration: none;">Volver a Artículos</a>
 </div>
-<div style="margin-left: 20px; margin-top: 10px; display: inline-block; background-color: #f8f8f8; color: #3498db; padding: 8px 16px; border-radius: 8px;">
-    <a href="{% url 'articulo:articulo_create' %}" style="color: #3498db; text-decoration: none;">Crear nuevo Artículo</a>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form class="form-inline" action="{% url 'articulo:articulo_list' %}" method="get">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="consulta" placeholder="Buscar Artículo...">
+                    <div class="input-group-append">
+                        <button class="btn btn-dark" type="submit">Buscar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-
- 
 </div>  
     <div class="my-4">
         <div class="container">
