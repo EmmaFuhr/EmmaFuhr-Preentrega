@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+
+{% block titulo %}
+    Detalle de Cliente
+{% endblock titulo %}
+
+{% block contenido %}
+<div class="container">
+    <div style="margin-left: 20px; margin-top: 10px; display: inline-block; background-color: #f8f8f8; color: #3498db; padding: 8px 16px; border-radius: 8px;">
+        <a href="{% url 'cliente:cliente_list' %}" style="color: #3498db; text-decoration: none;">Volver</a>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ object.apellido }}, {{ object.nombre }}</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>DNI:</strong> {{ object.dni }}</li>
+                        <li class="list-group-item"><strong>Dirección:</strong> {{ object.direccion }}, {{ object.ciudad }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock contenido %}

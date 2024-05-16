@@ -1,0 +1,86 @@
+{% extends 'core/base.html' %}
+
+{% block titulo %}
+    Lista de Cliente
+{% endblock titulo %}
+
+{% block contenido %}
+<div style="margin-left: 20px; margin-top: 10px; display: inline-block; background-color: #f8f8f8; color: #3498db; padding: 8px 16px; border-radius: 8px;">
+    <a href="{% url 'cliente:home' %}" style="color: #3498db; text-decoration: none;">Volver a Clientes</a>
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form class="form-inline" action="{% url 'cliente:cliente_list' %}" method="get">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="consulta" placeholder="Buscar Cliente...">
+                    <div class="input-group-append">
+                        <button class="btn btn-dark" type="submit">Buscar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        max-width: 18rem;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        height: 100%; /* Establecer altura fija */
+    }
+    .card-body {
+        padding: 15px;
+        height: 100%; /* Asegurar que el cuerpo de la tarjeta ocupe toda la altura */
+    }
+    .card-title {
+        margin-bottom: 5px;
+        font-size: 1.2rem;
+        color: #333;
+        text-align: center; /* Centrar el texto del título */
+    }
+    .card-text {
+        margin-bottom: 5px;
+        font-size: 1rem;
+        color: #666;
+        text-align: center; /* Centrar el texto */
+    }
+    .card-text strong {
+        color: #444;
+    }
+    .card-container {
+        margin: 0 auto; /* Centrar el contenedor de la tarjeta */
+        text-align: center; /* Centrar el contenido de la tarjeta */
+    }
+</style>
+<section class="clientes mt-4">
+    <div class="row">
+        {% for cliente in object_list %}
+            <div class="col-md-3 mb-3">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ cliente }}</h3>
+                            <div class="d-flex justify-content-center"> <!-- Contenedor flexible para centrar los botones -->
+                                <a href="{% url 'cliente:cliente_detail' cliente.id %}" class="btn btn-outline-secondary btn-sm rounded-pill">Detalle</a>
+                                <a href="{% url 'cliente:cliente_update' cliente.id %}" class="btn btn-outline-secondary btn-sm rounded-pill">Modificar</a>
+                                <a href="{% url 'cliente:cliente_delete' cliente.id %}" class="btn btn-outline-secondary btn-sm rounded-pill">Eliminar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+<div style="height: 50px;"></div>
+{% endblock contenido %}
+
+
+
+
+
+
+
