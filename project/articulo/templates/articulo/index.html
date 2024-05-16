@@ -4,36 +4,23 @@
 {% endblock titulo %}
 
 {% block contenido %}
-<div style="margin-left: 20px; margin-top: 10px; display: inline-block; background-color: #f8f8f8; color: #3498db; padding: 8px 16px; border-radius: 8px;">
-    <a href="{% url 'articulo:articulo_list' %}" style="color: #3498db; text-decoration: none;">Listar Artículos</a>
-</div>
-<div style="margin-left: 20px; margin-top: 10px; display: inline-block; background-color: #f8f8f8; color: #3498db; padding: 8px 16px; border-radius: 8px;">
-    <a href="{% url 'articulo:articulo_create' %}" style="color: #3498db; text-decoration: none;">Crear nuevo Artículo</a>
-</div>
-
- 
-</div>  
-    <div class="my-4">
-        <div class="container">
-            <div class="row">
-                {% for articulo in articulos %}
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h2 class="card-title">{{ articulo.nombre }}</h2>
-                                <h4 class="card-price">${{ articulo.precio }}</h4>
-                                <p class="card-text">{{ articulo.descripcion }}</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="btn-group-vertical d-flex align-items-stretch">
+                <a class="btn btn-primary btn-lg btn-block my-2 rounded-pill text-white" style="background-color: #343a40; border: none;" href="{% url 'articulo:articulo_list' %}">Listar Artículos</a>
+                <a class="btn btn-primary btn-lg btn-block my-2 rounded-pill text-white" style="background-color: #343a40; border: none;" href="{% url 'articulo:articulo_create' %}">Crear nuevo Artículo</a>
+                <a class="btn btn-primary btn-lg btn-block my-2 rounded-pill text-white" style="background-color: #343a40; border: none;" href="{% url 'core:home' %}">Volver</a>
             </div>
         </div>
     </div>
-<div style="height: 50px;"></div>
+</div>
 {% endblock contenido %}
+
+
+
+
+
+
 
 

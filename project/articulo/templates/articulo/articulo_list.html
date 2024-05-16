@@ -25,13 +25,14 @@
     <div class="my-4">
         <div class="container">
             <div class="row">
-                {% for articulo in articulos %}
+                {% for articulo in object_list %}
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
                             <div class="card-body">
                                 <h2 class="card-title">{{ articulo.nombre }}</h2>
-                                <h4 class="card-price">${{ articulo.precio }}</h4>
-                                <p class="card-text">{{ articulo.descripcion }}</p>
+                                <a href="{% url 'articulo:articulo_detail' articulo.id %}" class="btn btn-outline-secondary btn-sm rounded-pill">Detalle</a>
+                                <a href="{% url 'articulo:articulo_update' articulo.id %}" class="btn btn-outline-secondary btn-sm rounded-pill">Modificar</a>
+                                <a href="{% url 'articulo:articulo_delete' articulo.id %}" class="btn btn-outline-secondary btn-sm rounded-pill">Eliminar</a>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
