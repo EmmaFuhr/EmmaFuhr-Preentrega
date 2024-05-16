@@ -12,7 +12,7 @@
         <div class="col-md-6">
             <form class="form-inline" action="{% url 'articulo:articulo_list' %}" method="get">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="consulta" placeholder="Buscar Artículo...">
+                    <input type="text" class="form-control" name="consulta" placeholder="Buscar Artículo..." value="{{ request.GET.consulta }}">
                     <div class="input-group-append">
                         <button class="btn btn-dark" type="submit">Buscar</button>
                     </div>
