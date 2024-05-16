@@ -1,0 +1,87 @@
+{% extends 'core/base.html' %}
+
+{% block titulo %}
+    Pedidos registrados
+{% endblock titulo %}
+
+{% block contenido %}
+<div class="container my-4">
+    <div class="d-inline-block bg-light text-primary p-2 rounded">
+        <a href="{% url 'cliente:pedidos' %}" class="text-primary text-decoration-none">Volver a Pedidos</a>
+    </div>
+
+    <div class="row justify-content-center my-3">
+        <div class="col-md-6">
+            <form class="form-inline" action="{% url 'cliente:pedido_list' %}" method="get">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="consulta" placeholder="Buscar Pedido...">
+                    <div class="input-group-append">
+                        <button class="btn btn-dark" type="submit">Buscar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        .card {
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .card-title {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .card-text {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .card-text strong {
+            color: #444;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        .btn-group .btn {
+            margin: 0 10px;
+        }
+    </style>
+
+    <section class="clientes mt-4">
+        <div class="row">
+            {% for pedido in object_list %}
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">Cliente: {{ pedido.cliente }}</h3>
+                            <p class="card-text">
+                                <strong>ID de Pedido:</strong> 0000{{ pedido.id }}
+                            </p>
+                            <div class="btn-group">
+                                <a href="{% url 'cliente:pedido_detail' pedido.id %}" class="btn btn-outline-secondary btn-sm rounded-pill">Detalle</a>
+                                <a href="{% url 'cliente:pedido_update' pedido.id %}" class="btn btn-outline-secondary btn-sm rounded-pill">Modificar</a>
+                                <a href="{% url 'cliente:pedido_delete' pedido.id %}" class="btn btn-outline-secondary btn-sm rounded-pill">Eliminar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <div style="height: 50px;"></div>
+</div>
+{% endblock contenido %}

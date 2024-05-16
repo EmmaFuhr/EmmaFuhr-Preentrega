@@ -75,3 +75,39 @@ class ClienteUpdate(UpdateView):
     form_class = forms.ClienteForm
     template_name = "cliente/cliente_update.html"
     success_url = reverse_lazy("cliente:cliente_list")
+
+######### CLASES DE PEDIDOS #########
+
+class PedidoList(ListView):
+    model = models.Pedido
+    
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        consulta = self.request.GET.get('consulta')  
+
+        if consulta:  
+            queryset = queryset.filter(
+                Q(cliente__nombre__icontains=consulta) |
+                Q(cliente__apellido__icontains=consulta) |  
+                Q(articulo__nombre__icontains=consulta)                 
+            )
+        return queryset
+    
+class PedidoDetail(DetailView):
+    model = models.Pedido
+
+class PedidoDelete(DeleteView):
+    model = models.Pedido
+    success_url = reverse_lazy("cliente:pedido_list")
+
+class PedidoCreate(CreateView):
+    model = models.Pedido
+    form_class = forms.PedidoForm
+    success_url = reverse_lazy("cliente:pedido_list")
+
+class PedidoUpdate(UpdateView):
+    model = models.Pedido
+    form_class = forms.PedidoForm
+    template_name = "cliente/pedido_update.html"
+    success_url = reverse_lazy("cliente:pedido_list")
