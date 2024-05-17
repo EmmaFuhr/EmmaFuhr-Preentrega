@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+
+{% block titulo %}
+Inicio de Sesión
+{% endblock titulo %}
+
+{% block contenido %}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">¡Bienvenido de vuelta!</h2>
+                    <p class="card-text text-center">Por favor, inicia sesión para continuar.</p>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="id_username" class="sr-only">Nombre de usuario</label>
+                            <input type="text" name="username" class="form-control" id="username" placeholder="Nombre de usuario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_password" class="sr-only">Contraseña</label>
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Contraseña" required>
+                        </div>
+                        <input type="hidden" name="next" value="{% url 'core:home' %}">
+                        <button type="submit" class="btn btn-outline-dark  btn-block">Iniciar Sesión</button>
+                        <a href="{% url 'core:home' %}" class="btn btn-secondary btn-block">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock contenido %}
+
+
+
