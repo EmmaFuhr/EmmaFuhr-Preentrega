@@ -14,7 +14,7 @@
                         {% csrf_token %}
                         <div class="table-responsive">
                             <table class="table">
-                                ¿Desea eliminar el pedido de {{ pedido.cliente }}?
+                                ¿Desea eliminar el pedido de {{ object.cliente }}?
                             </table>
                         </div>
                         <button type="submit" class="btn btn-danger">Eliminar</button>
