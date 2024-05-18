@@ -3,17 +3,21 @@ from . import models, forms
 from django.views.generic import CreateView,DeleteView, DetailView, ListView, UpdateView
 from django.urls import reverse_lazy
 from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 # Create your views here.
 def home(request):
     return render(request, "cliente/index.html")
 
+@login_required
 def pedidos(request):
     return render(request, "cliente/pedidos.html")
 
    
 ######### CLASES DE CLIENTES #########
-
+@method_decorator(login_required, name='dispatch')
 class ClienteList(ListView):
     model = models.Cliente
 
@@ -27,19 +31,23 @@ class ClienteList(ListView):
                 Q(apellido__icontains=consulta)  
             )
         return queryset
-    
+
+@method_decorator(login_required, name='dispatch')
 class ClienteDetail(DetailView):
     model = models.Cliente
 
-class ClienteDelete(DeleteView):
+@method_decorator(login_required, name='dispatch')
+class ClienteDelete(LoginRequiredMixin,DeleteView):
     model = models.Cliente
     success_url = reverse_lazy("cliente:cliente_list")
 
+@method_decorator(login_required, name='dispatch')
 class ClienteCreate(CreateView):
     model = models.Cliente
     form_class = forms.ClienteForm
     success_url = reverse_lazy("cliente:cliente_list")
 
+@method_decorator(login_required, name='dispatch')
 class ClienteUpdate(UpdateView):
     model = models.Cliente
     form_class = forms.ClienteForm
@@ -47,7 +55,7 @@ class ClienteUpdate(UpdateView):
     success_url = reverse_lazy("cliente:cliente_list")
 
 ######### CLASES DE PEDIDOS #########
-
+@method_decorator(login_required, name='dispatch')
 class PedidoList(ListView):
     model = models.Pedido
     
@@ -63,19 +71,23 @@ class PedidoList(ListView):
                 Q(articulo__nombre__icontains=consulta)                 
             )
         return queryset
-    
+
+@method_decorator(login_required, name='dispatch')   
 class PedidoDetail(DetailView):
     model = models.Pedido
 
-class PedidoDelete(DeleteView):
+@method_decorator(login_required, name='dispatch')
+class PedidoDelete(LoginRequiredMixin,DeleteView):
     model = models.Pedido
     success_url = reverse_lazy("cliente:pedido_list")
 
+@method_decorator(login_required, name='dispatch')
 class PedidoCreate(CreateView):
     model = models.Pedido
     form_class = forms.PedidoForm
     success_url = reverse_lazy("cliente:pedido_list")
 
+@method_decorator(login_required, name='dispatch')
 class PedidoUpdate(UpdateView):
     model = models.Pedido
     form_class = forms.PedidoForm

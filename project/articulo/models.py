@@ -1,10 +1,12 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Articulo(models.Model):
     nombre = models.CharField(max_length=200, verbose_name='Nombre')
     descripcion = models.CharField(max_length=200, verbose_name='Descripción')
-    precio =  models.CharField(max_length=200, verbose_name='Precio')
+    precio =  models.FloatField(max_length=200, verbose_name='Precio')
+    fecha_actualizacion = models.DateField(null=True, blank=True, default=timezone.now, editable=False, verbose_name="Fecha de actualización")
 
     def __str__(self):
         return f"{self.nombre} - ${self.precio}"
