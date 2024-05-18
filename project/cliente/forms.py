@@ -9,6 +9,7 @@ class ClienteForm(forms.ModelForm):
             "nombre": forms.TextInput(attrs={"class": "form-control"}),
             "apellido": forms.TextInput(attrs={"class": "form-control"}),
             "dni": forms.TextInput(attrs={"class": "form-control"}),
+            "fecha_nacimiento": forms.DateInput(attrs={"class": "form-control", "type": "date"}),
             "direccion": forms.TextInput(attrs={"class": "form-control"}),
             "ciudad": forms.TextInput(attrs={"class": "form-control"}),
         }
@@ -21,5 +22,6 @@ class PedidoForm(forms.ModelForm):
             "cliente": forms.Select(attrs={"class": "form-control"}),
             "articulo": forms.Select(attrs={"class": "form-control"}),
             "cantidad": forms.TextInput(attrs={"class": "form-control"}),
+            "fecha_actualizacion": forms.HiddenInput(),
             
         }
