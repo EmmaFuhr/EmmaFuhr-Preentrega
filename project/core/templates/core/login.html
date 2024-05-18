@@ -14,7 +14,7 @@ Inicio de Sesión
                     <h2 class="card-title text-center mb-4">¡Bienvenido de vuelta!</h2>
                     <p class="card-text text-center">Por favor, inicia sesión para continuar.</p>
 
-                    <form method="post">
+                    <form method="post" action="{% url 'core:login' %}">
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="id_username" class="sr-only">Nombre de usuario</label>

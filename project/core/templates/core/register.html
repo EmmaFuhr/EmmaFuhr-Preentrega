@@ -1,0 +1,43 @@
+{% extends 'core/base.html' %}
+
+{% block titulo %}
+    Registrarse
+{% endblock titulo %}
+
+{% block contenido %}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">¡Bienvenido!</h2>
+                    <p class="card-text text-center">Por favor, regístrate para continuar.</p>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.non_field_errors }}
+                            {% for field in form %}
+                                <div class="form-group mb-4">
+                                    {{ field.label_tag }}
+                                    {{ field }}
+                                    <div class="text-muted">{{ field.help_text }}</div>
+                                    <div class="text-danger">{{ field.errors }}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        
+                        <input type="hidden" name="next" value="{% url 'core:login' %}">
+                        <button type="submit" class="btn btn-outline-dark btn-block mt-3">Registrar</button>
+                        <a href="{% url 'core:home' %}" class="btn btn-secondary btn-block mt-2">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock contenido %}
+
+
