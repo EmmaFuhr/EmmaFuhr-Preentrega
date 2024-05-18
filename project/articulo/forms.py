@@ -9,4 +9,5 @@ class ArticuloForm(forms.ModelForm):
             "nombre": forms.TextInput(attrs={"class": "form-control"}),
             "descripcion": forms.TextInput(attrs={"class": "form-control"}),
             "precio": forms.TextInput(attrs={"class": "form-control"}),
+            "fecha_actualizacion": forms.DateField(),
         }
