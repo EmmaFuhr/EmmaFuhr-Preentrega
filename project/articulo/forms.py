@@ -8,6 +8,6 @@ class ArticuloForm(forms.ModelForm):
         widgets = {
             "nombre": forms.TextInput(attrs={"class": "form-control"}),
             "descripcion": forms.TextInput(attrs={"class": "form-control"}),
-            "precio": forms.TextInput(attrs={"class": "form-control"}),
-            "fecha_actualizacion": forms.DateField(),
+            "precio": forms.NumberInput(attrs={"class": "form-control"}),
+         
         }

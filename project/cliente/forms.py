@@ -19,9 +19,11 @@ class PedidoForm(forms.ModelForm):
         model = models.Pedido
         fields = '__all__'
         widgets = {
+            "vendedor": forms.Select(attrs={"class": "form-control"}),
             "cliente": forms.Select(attrs={"class": "form-control"}),
             "articulo": forms.Select(attrs={"class": "form-control"}),
-            "cantidad": forms.TextInput(attrs={"class": "form-control"}),
-            "fecha_actualizacion": forms.HiddenInput(),
+            "cantidad": forms.NumberInput(attrs={"class": "form-control"}),
+            "total_venta": forms.FloatField(),
+            "fecha_creacion": forms.HiddenInput(),
             
         }

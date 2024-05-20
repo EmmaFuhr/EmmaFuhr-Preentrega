@@ -8,9 +8,13 @@ class ClienteAdmin(admin.ModelAdmin):
     
 
 class PedidoAdmin(admin.ModelAdmin):
-    list_display = ("cliente","articulo", "cantidad", "fecha_actualizacion")
+    list_display = ("vendedor","cliente","articulo", "cantidad", "total_venta", "fecha_creacion")
     list_display_links = ("cliente",)
-    date_hierarchy = "fecha_actualizacion"
+    search_fields = ("cliente__nombre","cliente__apellido", "articulo__nombre", "vendedor__nombre__username")
+    date_hierarchy = "fecha_creacion"
+
+    
+  
     
 # Register your models here.
 admin.site.register(models.Cliente, ClienteAdmin)
