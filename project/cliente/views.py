@@ -6,6 +6,7 @@ from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.core.exceptions import ValidationError
 
 # Create your views here.
 def home(request):
@@ -93,3 +94,12 @@ class PedidoUpdate(UpdateView):
     form_class = forms.PedidoForm
     template_name = "cliente/pedido_update.html"
     success_url = reverse_lazy("cliente:pedido_list")
+
+    def form_valid(self, form):
+        try:
+            return super().form_valid(form)
+        except ValidationError as e:
+            error_message = str(e)
+            form.add_error(None, error_message)  
+            return self.form_invalid(form)
+
