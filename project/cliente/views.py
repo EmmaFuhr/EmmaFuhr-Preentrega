@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.exceptions import ValidationError
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
@@ -41,6 +42,7 @@ class ClienteDetail(DetailView):
 class ClienteDelete(LoginRequiredMixin,DeleteView):
     model = models.Cliente
     success_url = reverse_lazy("cliente:cliente_list")
+
 
 @method_decorator(login_required, name='dispatch')
 class ClienteCreate(CreateView):
@@ -81,12 +83,15 @@ class PedidoDetail(DetailView):
 class PedidoDelete(LoginRequiredMixin,DeleteView):
     model = models.Pedido
     success_url = reverse_lazy("cliente:pedido_list")
-
+    
 @method_decorator(login_required, name='dispatch')
 class PedidoCreate(CreateView):
     model = models.Pedido
     form_class = forms.PedidoForm
     success_url = reverse_lazy("cliente:pedido_list")
+
+    def form_invalid(self, form):
+        return self.render_to_response(self.get_context_data(form=form))
 
 @method_decorator(login_required, name='dispatch')
 class PedidoUpdate(UpdateView):

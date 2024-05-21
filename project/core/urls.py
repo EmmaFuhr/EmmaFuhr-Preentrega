@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 from django.contrib.auth.views import LogoutView
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
+from django.contrib.staticfiles.urls import static, staticfiles_urlpatterns
 
 app_name = 'core'
 
@@ -16,5 +17,6 @@ urlpatterns = [
 ]
 
 urlpatterns += staticfiles_urlpatterns()
+urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

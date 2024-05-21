@@ -3,7 +3,7 @@ from . import models
 
 
 class ClienteAdmin(admin.ModelAdmin):
-    list_display = ("apellido", "nombre", "dni", "direccion", "ciudad", "fecha_nacimiento")
+    list_display = ("apellido", "nombre", "dni", "direccion", "ciudad", "fecha_nacimiento", "avatar")
     list_display_links = ("nombre", "apellido")
     
 

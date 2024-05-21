@@ -1,5 +1,7 @@
 from django import forms
 from . import models
+from django.core.exceptions import ValidationError
+
 
 class ClienteForm(forms.ModelForm):
     class Meta:
@@ -27,3 +29,12 @@ class PedidoForm(forms.ModelForm):
             "fecha_creacion": forms.HiddenInput(),
             
         }
+    def clean(self):
+        cleaned_data = super().clean()
+        articulo = cleaned_data.get('articulo')
+        cantidad = cleaned_data.get('cantidad')
+
+        if articulo and cantidad > articulo.stock:
+            raise ValidationError(f"La cantidad solicitada ({cantidad}) excede el stock disponible ({articulo.stock}) del artículo {articulo}.")
+
+        return cleaned_data

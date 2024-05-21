@@ -11,6 +11,14 @@
             <div class="card">
                 <div class="card-body">
                     <form action="" method="post">
+                        {% if messages %}
+                            <ul class="messages">
+                            {% for message in messages %}
+                                 <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}       
+                                         
                         {% csrf_token %}
                         <div class="table-responsive">
                             <table class="table">

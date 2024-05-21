@@ -15,6 +15,7 @@ class Cliente(models.Model):
     fecha_nacimiento = models.DateField(null=True, blank=True, verbose_name="Fecha de Nacimiento")
     direccion =  models.CharField(max_length=200, verbose_name='Dirección')
     ciudad =  models.CharField(max_length=200, verbose_name='Ciudad', default='',null=False)
+    avatar = models.ImageField(upload_to="avatares", null=True, blank=True)
 
     def __str__(self):
         return f"{self.apellido}, {self.nombre}"
@@ -43,31 +44,30 @@ class Pedido(models.Model):
 
     def save(self, *args, **kwargs):
         with transaction.atomic():
-            if self.pk:  # Si el pedido ya existe
-                pedido_anterior = Pedido.objects.get(pk=self.pk)
+            if self.pk:
+                pedido_anterior = Pedido.objects.select_for_update().get(pk=self.pk)
                 cantidad_anterior = pedido_anterior.cantidad
                 articulo_anterior = pedido_anterior.articulo
             else:
                 cantidad_anterior = 0
                 articulo_anterior = None
 
-            # Reponer el stock anterior si el artículo o la cantidad han cambiado
-            if articulo_anterior:
+            if articulo_anterior and articulo_anterior != self.articulo:
+                # Reponer el stock del artículo anterior si el artículo ha cambiado
                 articulo_anterior.stock += cantidad_anterior
                 articulo_anterior.save()
 
-            # Verificar nuevamente el stock disponible para el artículo actual
-            stock_disponible = self.articulo.stock + cantidad_anterior
+            # Verificar el stock disponible del artículo actual
+            stock_disponible = self.articulo.stock
+            if self.pk:
+                stock_disponible += cantidad_anterior
+
             if self.cantidad > stock_disponible:
                 raise ValidationError(f"La cantidad solicitada ({self.cantidad}) excede el stock disponible ({stock_disponible}) del artículo {self.articulo}.")
 
-            # Actualizar el stock actual
-            if self.pk:  # Solo si el pedido ya existe
-                cantidad_restante = stock_disponible - self.cantidad
-                if cantidad_restante < 0:
-                    raise ValidationError("No hay suficiente stock disponible.")
-                self.articulo.stock = cantidad_restante
-                self.articulo.save()
+            # Actualizar el stock del artículo actual
+            self.articulo.stock = stock_disponible - self.cantidad
+            self.articulo.save()
 
             # Calcular el total de la venta
             self.total_venta = self.articulo.precio * self.cantidad

@@ -56,27 +56,38 @@
     }
 </style>
 <section class="clientes mt-4">
-    <div class="row">
-        {% for cliente in object_list %}
-            <div class="col-md-3 mb-3">
-                <div class="card-container">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">{{ cliente }}</h3>
-                            <div class="d-flex justify-content-center"> <!-- Contenedor flexible para centrar los botones -->
-                                <a href="{% url 'cliente:cliente_detail' cliente.id %}" class="btn btn-outline-secondary btn-sm rounded-pill">Detalle</a>
-                                <a href="{% url 'cliente:cliente_update' cliente.id %}" class="btn btn-outline-secondary btn-sm rounded-pill">Modificar</a>
-                                <a href="{% url 'cliente:cliente_delete' cliente.id %}" class="btn btn-outline-secondary btn-sm rounded-pill">Eliminar</a>
+    <div class="container"> <!-- Envuelve la sección en un contenedor para aplicar el margen -->
+        <div class="row">
+            {% for cliente in object_list %}
+                <div class="col-md-3 mb-3">
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-center mb-4"> <!-- Contenedor flexible para centrar la imagen -->
+                                    {% if cliente.avatar %}
+                                    <img src="{{ cliente.avatar.url }}" class="rounded-circle" style="width: 200px; height: 200px; object-fit: cover; object-position: center center;" alt="Foto de perfil">
+                                    {% else %}
+                                        <p>No hay imagen de avatar disponible</p>
+                                    {% endif %}
+                                </div>
+                                <h3 class="card-title text-center">{{ cliente }}</h3>
+                                <div class="d-flex justify-content-center"> <!-- Contenedor flexible para centrar los botones -->
+                                    <a href="{% url 'cliente:cliente_detail' cliente.id %}" class="btn btn-outline-secondary btn-sm rounded-pill">Detalle</a>
+                                    <a href="{% url 'cliente:cliente_update' cliente.id %}" class="btn btn-outline-secondary btn-sm rounded-pill">Modificar</a>
+                                    <a href="{% url 'cliente:cliente_delete' cliente.id %}" class="btn btn-outline-secondary btn-sm rounded-pill">Eliminar</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 </section>
 <div style="height: 50px;"></div>
+
 {% endblock contenido %}
+
 
 
 

@@ -6,8 +6,9 @@
 
 {% block contenido %}
 <div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row">
+        <!-- Tarjeta a la izquierda -->
+        <div class="col-md-6 mb-4">
             <div class="card border-0 shadow">
                 <div class="card-body text-center">
                     <img src="{% static 'core/img/emma.webp' %}" class="rounded-circle mb-4" width="200" height="200" alt="Foto de perfil">
@@ -23,10 +24,26 @@
                 </div>
             </div>
         </div>
+        <!-- Tarjeta a la derecha -->
+        <div class="col-md-6 mb-4">
+            <div class="card border-0 shadow">
+                <div class="card-body text-center">
+                    <img src="{% static 'core/img/ep.jpg' %}" class="rounded-circle mb-4" width="200" height="200" alt="Foto de perfil">
+                    <h2 class="card-title mb-3">Sobre el proyecto!</h2>
+                    <p class="card-text">Emily Parfumerie es una aplicación web dedicada a la venta de perfumes de alta calidad. Esta plataforma ofrece una amplia variedad de fragancias para satisfacer los gustos y preferencias de sus clientes. La aplicación permite a los usuarios explorar y comprar perfumes de marcas reconocidas, así como también productos exclusivos de edición limitada.
+                        El objetivo principal de Emily Parfumerie es ofrecer a los clientes una experiencia de compra conveniente y satisfactoria, mientras se promueven las ventas y se impulsa el crecimiento del negocio de perfumería. La aplicación busca posicionarse como un destino confiable para la compra de perfumes de calidad, brindando un servicio personalizado y atención al cliente excepcional.
+                        La aplicación está dirigida a amantes de la perfumería que buscan acceso a una amplia gama de fragancias de alta calidad. Además, está dirigida a vendedores y administradores de negocios de perfumería que desean una plataforma eficiente para gestionar sus operaciones comerciales y aumentar sus ventas.
+                    </p>
+                    <p class="card-text"></p>
+                   
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 <div style="height: 100px;"></div>
+
 
 {% endblock contenido %}
 
