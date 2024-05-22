@@ -1,42 +1,60 @@
-# Proyecto CoderHouse
-Comisión: 54135
+# Proyecto Final CoderHouse 2024
+**Comisión:** 54135
 
-Alumna: Emma Fuhr
+**Alumna:** Emma Fuhr
+
+ENLACE VIDEO EXPLICATIVO: https://drive.google.com/file/d/1xG1GBOfl4gU5u0lmlDLB_SMsn7MfSNDg/view?usp=drive_link
 
 ## Acerca del Proyecto
-Esta aplicación web está orientada a la venta de artículos exclusivos de perfumería. Cuenta con un registro de Clientes y Artículos, como también la gestión de pedidos realizados por cada cliente. Estos módulos facilitan la obtención de información para cada proceso de compra.
+
+Esta aplicación web está diseñada para la gestión de pedidos en una empresa de venta de artículos de perfumería. La aplicación permite a los usuarios gestionar pedidos realizados por vendedores, controlar el stock de artículos y gestionar el registro de clientes. Además, cuenta con un módulo de administración donde un superusuario, "admin", puede dar de alta a nuevos usuarios de la empresa. La aplicación también es accesible al público con funciones restringidas, permitiendo solo la visualización de la página de inicio, los artículos disponibles y la sección "About".
+
+## Aplicaciones
+
+- **Core:** Pantalla principal que sirve como punto de entrada a la aplicación.
+  
+- **Cliente:** Permite la visualización y gestión de clientes registrados, incluyendo el ingreso de nuevos clientes.
+  
+- **Artículo:** Permite la visualización y gestión de artículos disponibles, incluyendo la carga de nuevos artículos.
+  
+- **Pedido:** Permite la visualización y gestión de pedidos registrados, incluyendo la creación de nuevos pedidos.
+  
+- **Vendedor:** Permite la visualización y gestión de vendedores registrados, permitiendo al administrador crear nuevos vendedores.
+
+## Modelos
+
+Las aplicaciones mencionadas utilizan los siguientes modelos para gestionar la información:
+
+- **Cliente:** Almacena datos de clientes, incluyendo nombre, apellido, DNI, fecha de nacimiento, dirección, ciudad y avatar.
+  
+- **Artículo:** Almacena datos de artículos, incluyendo nombre, descripción, precio, stock, fecha de actualización e imagen del producto.
+  
+- **Pedido:** Almacena datos de pedidos, incluyendo vendedor, cliente, artículo, cantidad, total de venta y fecha de creación.
+  
+- **Vendedor:** Almacena datos de vendedores, incluyendo nombre, teléfono, ciudad, fecha de alta y avatar.
+
+## Funcionalidades
+
+- **Gestión de Clientes:** Registro y administración de clientes con toda la información relevante.
+  
+- **Gestión de Artículos:** Registro y administración de artículos con detalles como descripción, precio y stock.
+  
+- **Gestión de Pedidos:** Creación y administración de pedidos, vinculando clientes, artículos y vendedores.
+  
+- **Control de Stock:** Monitoreo y actualización del stock de artículos disponibles.
+  
+- **Administración de Usuarios:** El superusuario "admin" tiene la capacidad de crear y gestionar usuarios dentro de la empresa.
+  
+- **Acceso Público Restringido:** Los visitantes pueden acceder a la página de inicio, ver los artículos disponibles y la sección "About" sin necesidad de autenticarse.
+
+## Acceso y Roles de Usuario
+
+- **Superusuario ("admin"):** Tiene acceso completo a todas las funcionalidades de la aplicación, incluyendo la administración de usuarios.
+  
+- **Vendedores:** Pueden gestionar sus propios pedidos y ver la información relacionada con los clientes y artículos.
+  
+- **Clientes Registrados:** Pueden ver y gestionar sus propios pedidos.
+  
+- **Público:** Puede acceder a la página de inicio, ver los artículos disponibles y la sección "About" con funciones limitadas.
 
 
-## Tecnologías utilizadas en el proyecto
-    asgiref 3.8.1    Django 5.0.4    sqlparse 0.5.0    tzdata 2024.1
-
-
-## Aplicaciones    
-    Core: Pantalla principal  
-      
-    Cliente: Muestra los clientes registrados y permite el ingreso de nuevos clientes.
-
-    Artículo: Muestra los artículos disponibles y permite la carga de nuevos artículos.
-
-    Pedido: Muestra los pedidos registrados y permite la creación de nuevos pedidos.
-
-### Modelos
-Las aplicaciones anteriores utilizan el contenido de los siguientes modelos:
-
-    -Cliente: Almacena todos los datos correspondientes de cada cliente: nombre, apellido, DNI, dirección y ciudad.
-
-    -Artículo: Almacena todos los datos correspondientes a cada artículo: nombre, descripción y precio.
-
-    -Pedido: Almacena todos los datos correspondientes a cada pedido: cliente, artículo y cantidad.
-
-## Mejoras futuras
-
-Las mejoras para el proyecto en un futuro son las detalladas a continuación:
-
--Agregar una app de carrito para gestionar la venta     
-
--Agregar en base de datos las imágenes de producto de los artículos registrados para que cuando se ingresa a la app Artículos permita ver junto a la descripción, la foto del artículo en cuestión.    
-
--Agregar en la página principal una sección donde cada cliente puede detallar su experiencia con la tienda.    
-
--Modificar la forma en la que se muestra al público en general, ya que en este caso cualquiera tiene acceso a toda la información de la tienda. Se necesita crear usuario de gestión de los propietarios de la tienda, los cuales tendrán el acceso a toda la información. Y luego crear la visual de cliente la cual únicamente permite registrarse para realizar compras y gestionar sus propios pedidos.
