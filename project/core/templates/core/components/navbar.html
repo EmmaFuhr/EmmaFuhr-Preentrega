@@ -5,12 +5,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item"><a class="nav-link {% if request.path == "/" %}active{% endif %}" aria-current="page" href="{% url 'core:home' %}">Home</a></li>
+                
             {% if user.is_authenticated %}
                 
                 <li class="nav-item"><a class="nav-link {% if "/cliente/cliente" in request.path %}active{% endif %}" href="{% url 'cliente:home' %}">Clientes</a></li>
                 <li class="nav-item"><a class="nav-link {% if "/articulo/" in request.path %}active{% endif %}" href="{% url 'articulo:home' %}">Artículos</a></li>
                 <li class="nav-item"><a class="nav-link {% if "cliente/pedido" in request.path %}active{% endif %}" href="{% url 'cliente:pedidos' %}">Pedidos</a></li>
-                            
+            {% else %}
+                <li class="nav-item"><a class="nav-link {% if "/articulo/" in request.path %}active{% endif %}" href="{% url 'articulo:articulo_list' %}">Artículos</a></li>
             {% endif %}    
                 <li class="nav-item"><a class="nav-link {% if "/about/" in request.path %}active{% endif %}" href="{% url 'core:about' %}">About</a></li>
             </ul>
@@ -26,9 +28,10 @@
                             <button type="submit" class="btn btn-dark ">Logout</button>
                         </form>
                     </li>
+                    <li class="nav-item"><a class="nav-link {% if "/register" in request.path %}active{% endif %}" href="{% url 'core:register' %}">Registrar Usuario</a></li>
                 {% else %}
                     <li class="nav-item"><a class="nav-link {% if "/login" in request.path %}active{% endif %}" href="{% url 'core:login' %}">Login</a></li>
-                    <li class="nav-item"><a class="nav-link {% if "/register" in request.path %}active{% endif %}" href="{% url 'core:register' %}">Registrarse</a></li>
+                    
                 {% endif %}
             </ul>
         </div>

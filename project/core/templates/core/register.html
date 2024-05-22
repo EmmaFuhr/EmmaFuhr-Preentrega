@@ -7,6 +7,10 @@
 {% block contenido %}
 
 <div class="container-fluid">
+    
+    {% if user.username == "admin" %}
+        
+    
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card mt-5">
@@ -37,6 +41,13 @@
         </div>
     </div>
 </div>
+{% else %}
+    <p class="card-text text-center">Para registar un usuario solicite permiso a su Adminitrador.</p>
+    <div class="d-flex justify-content-center mt-2">
+        <a href="{% url 'core:home' %}" class="btn btn-secondary">Volver a Inicio</a>
+    </div>
+    
+{% endif %}
 
 {% endblock contenido %}
 
