@@ -13,7 +13,7 @@ import logging
 def home(request):
     return render(request, "articulo/index.html")
 
-@method_decorator(login_required, name='dispatch')
+
 class ArticuloList(ListView):
     model = models.Articulo
 
@@ -28,7 +28,7 @@ class ArticuloList(ListView):
             )
         return queryset
 
-@method_decorator(login_required, name='dispatch')    
+  
 class ArticuloDetail(DetailView):
     model = models.Articulo
 
